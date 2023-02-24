@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+  <style>
+    background-color:lightblue
+    input{
+      padding:5px;
+      border-radius: 4px;
+  }
+  label{
+      font-weight: bold;
+  }
+  body {
+    background-color: hsla(89, 43%, 51%, 0.3);
+  }
+ 
+  </style>
+  <body>
+    
+
+    <!--  Client Profile Management-->
+    <h1>Profile Management</h1>
+    <form></form>
+      <p>
+        <label for="fullname">Full Name:</label>
+        <output type="text" name="fullname" id="fullname" maxlength="50"> Ryan Chew 
+      </p>
+
+      <p>
+        <label for="address1">Address 1:</label>
+        <output type="text" name="address1" id="address1" maxlength="100" required> 12345 Shasta St
+      </p>
+      <p>
+        <label for="address2">Address 2:</label>
+        <output type="text" name="address2" id="address2" maxlength="100"> 
+      </p>
+      <p>
+        <label for="city">City:</label>
+        <output type="text" name="city" id="city" maxlength="100" required> Houston
+      </p>
+      <p>
+        <label for="state">State:</label> TX
+        
+      </p>
+      <p>
+        <label for="zipcode">Zipcode:</label>
+        <output type="zipcode" name="zipcode" id="zipcode" maxlength="9" minlength="5" required> 77004
+      </p>
+      <button type="submit">EDIT YOUR PROFILE</button>
+ <button type="submit">GET A FUEL QUOTE</button>
+
+      
+    </form>
+
+  </body>
+</html>
