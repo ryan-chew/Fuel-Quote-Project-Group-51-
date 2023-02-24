@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+  <style>
+    background-color:lightblue
+    input{
+      padding:5px;
+      border-radius: 4px;
+  }
+  label{
+      font-weight: bold;
+  }
+  body {
+    background-color: hsla(89, 43%, 51%, 0.3);
+  }
+ 
+  </style>
+  <body>
+    
+
+    <!--  Client Profile Management-->
+    <h1>Fuel Quote Form</h1>
+    <form action="https://example.com/apply">
+      <p>
+        <label for="gallonsRequested">Gallons Requested :</label>
+        <input type="number" name="gallons" id="gallons" maxlength="50" required>
+      </p>
+      <p>
+        <label for="deliveryAddress">Delivery Address:</label> 
+        
+      </p>
+
+
+      <p>
+       <label for="start">Delivery Date:</label>
+
+<input type="date" id="start" name="trip-start"
+       value="2018-07-22"
+       min="2023-01-01" max="2023-12-31">
+
+      </p>
+      <p>
+        <label for="priceToGallon">Suggested Price per Gallon: $</label> 
+        
+      </p>
+      
+            <p>
+        <label for="totalAmountDue">Total Amount Due : $</label> 
+        
+      </p>
+      <button type="submit">Submit</button>
+
+      
+    </form>
+
+  </body>
+</html>
