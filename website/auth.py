@@ -75,7 +75,7 @@ def profile():
         state = request.form.get('state')
         zipcode = request.form.get('zipcode')
         data = ClientInformation(fullname=fullname, address1=address1, 
-        address2=address2, city = city, state = state, zipcode = zipcode)
+        address2=address2, city = city, state = state, zipcode = zipcode, user_id=current_user.id)
         db.session.add(data)
         db.session.commit()
         return redirect(url_for('views.home'))
