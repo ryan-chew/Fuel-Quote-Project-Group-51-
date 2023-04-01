@@ -4,26 +4,26 @@
       <h3 align="center">Fuel Quote</h3>
       <div class="form-group">
             <label for="gallonsRequested">Gallons Requested :</label>
-            <input type="number" name="gallons" id="gallons" maxlength="50" required>
+            <input type="number" name="gallons" id="gallons" maxlength="50" value= {{ gallons }} required>
           </p>
-          
+          <p>Delivery Address: {{ current_user.profile[0].address1 }}</p>
     
     
           <p>
            <label for="start">Delivery Date:</label>
     
     <input type="date" id="date" name="date"
-           value="2018-07-22"
+           value={{ date }}
            min="2023-01-01" max="2023-12-31" required>
     
           </p>
           <p>
-            <label for="priceToGallon">Suggested Price per Gallon: $3</label> 
+            <label for="priceToGallon">Suggested Price per Gallon: ${{ price_to_gallon }}</label> 
             
           </p>
           
                 <p>
-            <label for="totalAmountDue">Total Amount Due : $</label> 
+            <label for="totalAmountDue">Total Amount Due : ${{ cost }}</label> 
         
       </p>
       <button type="submit" class="btn btn-primary">Submit</button>
