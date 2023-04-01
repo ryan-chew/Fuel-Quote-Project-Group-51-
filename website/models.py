@@ -24,9 +24,10 @@ class Quote(db.Model):
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(150), unique=True)
+    username = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
-    profile = db.relationship('ClientInformation', backref='User', lazy=True)
+    profile = db.relationship('ClientInformation', backref='User', lazy=True) 
+    #right now can make multiple profiles
     quotes = db.relationship('Quote', backref='User', lazy=True)
 
