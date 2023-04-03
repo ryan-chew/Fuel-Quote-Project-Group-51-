@@ -1,4 +1,4 @@
-db = SQLAlchemy()  				  #name database
+db = SQLAlchemy()				  #name database
 DB_NAME = "database.db"\
 from . import db
 from flask_login import UserMixin
