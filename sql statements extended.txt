@@ -1,0 +1,78 @@
+db = SQLAlchemy()  				  #name database
+DB_NAME = "database.db"\
+from . import db
+from flask_login import UserMixin
+from sqlalchemy.sql import func
+
+
+class ClientInformation(db.Model):		#profile table
+    id = db.Column(db.Integer, primary_key=True)
+    fullname = db.Column(db.String(10000))
+    address1 = db.Column(db.String(10000))
+    address2 = db.Column(db.String(10000))
+    city = db.Column(db.String(10000))
+    state = db.Column(db.String(10000))
+    zipcode = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+class Quote(db.Model):			#quote table
+    id = db.Column(db.Integer, primary_key=True)
+    gallons = db.Column(db.Integer)
+    address = db.Column(db.String(10000))
+    date = db.Column(db.String(10000))
+    price_to_gallon = db.Column(db.Float(10))
+    cost = db.Column(db.Float(10))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+class User(db.Model, UserMixin):			#user table 
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(150), unique=True)
+    password = db.Column(db.String(150))
+    first_name = db.Column(db.String(150))
+    profile = db.relationship('ClientInformation', backref='User', lazy=True) 
+    quotes = db.relationship('Quote', backref='User', lazy=True)
+
+def create_database(app):			#create database
+    if not path.exists('website/' + DB_NAME):
+        db.create_all(app=app)
+        print('Created Database!')
+
+ app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    db.init_app(app)
+
+
+user = User.query.filter_by(username=username).first() 	#check username and password/ login
+        if user:
+            if check_password_hash(user.password, password):
+                flash('Logged in successfully!', category='success')
+                login_user(user, remember=True)
+                return redirect(url_for('auth.profile'))
+
+ user = User.query.filter_by(username=username).first()	#check if username exists, add username and password 
+        if user:
+            flash('User already exists.', category='error')
+        elif len(first_name) < 2:
+            flash('First name must be greater than 1 character.', category='error')
+        elif password1 != password2:
+            flash('Passwords don\'t match.', category='error')
+        elif len(password1) < 7:
+            flash('Password must be at least 7 characters.', category='error')
+        else:
+            new_user = User(username=username, first_name=first_name, password=generate_password_hash(
+                password1, method='sha256'))
+            db.session.add(new_user)
+            db.session.commit()
+
+ data = ClientInformation(fullname=fullname, address1=address1, 			#add profile 
+        address2=address2, city = city, state = state, zipcode = zipcode, user_id=current_user.id)
+        db.session.add(data)
+        db.session.commit()
+
+quote = Quote(gallons = gallons, address = address, date = date, cost = cost, 		#add quote
+        user_id =current_user.id)
+        db.session.add(quote)
+        db.session.commit()
+        return render_template("quote.html", user=current_user, cost = cost, price_to_gallon = price_to_gallon, gallons = gallons, date = date)
+
+ quotes = Quote.query.filter(Quote.user_id == current_user.id).all()		#retrieve quote history
+    return render_template("history.html", user=current_user, quotes = quotes)
