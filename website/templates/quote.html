@@ -4,7 +4,7 @@
       <h3 align="center">Fuel Quote</h3>
       <div class="form-group">
             <label for="gallonsRequested">Gallons Requested :</label>
-            <input type="number" name="gallons" id="gallons" maxlength="50" value= {{ gallons }} required>
+            <input type="number" name="gallons" id="gallons" min="1" maxlength="50" value= {{ gallons }} required>
           </p>
           <p>Delivery Address: {{ current_user.profile[0].address1 }}</p>
     
@@ -26,7 +26,9 @@
             <label for="totalAmountDue">Total Amount Due : ${{ cost }}</label> 
         
       </p>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary"> Get Quote</button>
+      <button type="submit" class="btn btn-secondary" name ="save" value="save"> Submit Quote</button>
     </form>
+
     {% endblock %}
     

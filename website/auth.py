@@ -70,7 +70,7 @@ def profile():
         address1 = request.form.get('address1')
         address2 = request.form.get('address2')
         city = request.form.get('city') 
-        state = request.form.get('state')
+        state = request.form.get('states')
         zipcode = request.form.get('zipcode')
         data = ClientInformation(fullname=fullname, address1=address1, 
         address2=address2, city = city, state = state, zipcode = zipcode, user_id=current_user.id)
