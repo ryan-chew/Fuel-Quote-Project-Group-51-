@@ -36,6 +36,7 @@ def home():
             return render_template("quote.html", user=current_user, cost = cost, price_to_gallon = price_to_gallon, gallons = gallons, date = date) 
         return render_template("quote.html", user=current_user, cost = 0, price_to_gallon = 0, gallons = 0, date = "2023-01-01")
     else:   
+        flash('Please create a profile, try again.')
         return redirect(url_for('auth.profile')) 
 
 @views.route('/history', methods=['GET', 'POST'])
@@ -47,6 +48,7 @@ def history():
         return render_template("history.html", user=current_user, quotes = quotes)
 
     else:
+        flash('Please create a profile, try again.')
         return redirect(url_for('auth.profile'))
 
 
